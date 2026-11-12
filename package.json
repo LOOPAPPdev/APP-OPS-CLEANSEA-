@@ -15,24 +15,30 @@
 		"publish": true
 	},
 	"dependencies": {
+		"better-auth": "^1.7.22",
+		"drizzle-orm": "^0.45.4",
 		"hono": "4.11.1",
 		"isbot": "5.1.32",
 		"react": "19.2.1",
 		"react-dom": "19.2.1",
-		"react-router": "7.18.5"
+		"react-router": "7.18.5",
+		"zod": "^4.6.7"
 	},
 	"devDependencies": {
 		"@cloudflare/vite-plugin": "1.52.1",
+		"@cloudflare/vitest-plugin": "^1.8.0",
 		"@cloudflare/workers-types": "^5.20261102.1",
 		"@react-router/dev": "7.18.5",
 		"@tailwindcss/vite": "4.1.17",
 		"@types/node": "24.10.1",
 		"@types/react": "19.2.7",
 		"@types/react-dom": "19.2.3",
+		"drizzle-kit": "^0.31.11",
 		"tailwindcss": "4.1.17",
 		"typescript": "5.9.3",
 		"vite": "^7.0.0",
 		"vite-tsconfig-paths": "5.1.4",
+		"vitest": "^5.1.0",
 		"wrangler": "4.136.1"
 	},
 	"private": true,
@@ -42,7 +48,10 @@
 		"deploy": "npm run build && wrangler deploy",
 		"dev": "react-router dev",
 		"preview": "npm run build && vite preview",
-		"typecheck": "npm run cf-typegen && react-router typegen && tsc -b"
+		"typecheck": "npm run cf-typegen && react-router typegen && tsc -b",
+		"test": "vitest run",
+		"db:generate": "drizzle-kit generate",
+		"db:migrate:local": "wrangler d1 migrations apply DB --local"
 	},
 	"type": "module"
 }

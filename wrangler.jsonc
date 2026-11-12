@@ -4,11 +4,12 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "react-router-hono-fullstack-template",
+	"name": "app-ops-cleansea",
 	"compatibility_date": "2025-10-08",
 	"main": "./workers/app.ts",
 	"vars": {
-		"VALUE_FROM_CLOUDFLARE": "Hello from Hono/CF"
+		"VALUE_FROM_CLOUDFLARE": "Hello from Hono/CF",
+		"BETTER_AUTH_URL": "http://localhost:5173"
 	},
 	"observability": {
 		"enabled": true
@@ -43,5 +44,17 @@
 	 * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
 	 */
 	// "services": [{ "binding": "MY_SERVICE", "service": "my-service" }]
+	/**
+	 * D1 binding. LOCAL DEVELOPMENT ONLY: database_id is a placeholder and MUST be replaced
+	 * with a real id (after approved `wrangler d1 create`) before any deployment.
+	 */
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "app-ops-cleansea-db",
+			"database_id": "00000000-0000-0000-0000-000000000000",
+			"migrations_dir": "workers/db/migrations"
+		}
+	],
 	"upload_source_maps": true
 }

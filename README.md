@@ -25,14 +25,14 @@ Build an internal full-stack application that enables an organization to plan, e
 | API | Hono, REST under `/api` | Template |
 | API contracts | Zod + `@hono/zod-openapi` | To integrate |
 | Runtime/hosting | Cloudflare Workers + Wrangler | Template |
-| Database | Cloudflare D1 (SQLite) | To provision |
-| ORM/migrations | Drizzle ORM + drizzle-kit + Wrangler D1 migrations | To integrate |
-| Authentication | Better Auth + Drizzle adapter, invite-only access | Candidate; runtime compatibility gate |
-| Authorization | Application RBAC + resource-level checks | To implement |
+| Database | Cloudflare D1 (SQLite) | Local only (binding + migration); remote NOT provisioned |
+| ORM/migrations | Drizzle ORM + drizzle-kit + Wrangler D1 migrations | Integrated (migration `0000_init`) |
+| Authentication | Better Auth + Drizzle adapter, invite-only access | Integrated, sign-up disabled; tested locally |
+| Authorization | Application RBAC + resource-level checks | Org-level RBAC implemented and tested; object-level checks come with phase E |
 | File storage | Cloudflare R2 | To provision |
 | Durable jobs | Cloudflare Workflows | Later phase |
 | External integrations | Typed API adapters + webhook verification + retries | Later phase |
-| Unit/integration tests | Vitest + `@cloudflare/vitest-plugin` | To integrate |
+| Unit/integration tests | Vitest + `@cloudflare/vitest-plugin` | Integrated (`npm test`) |
 | Browser E2E tests | Playwright | To integrate |
 | Quality | TypeScript, Biome or ESLint (one only), dependency audit | To integrate |
 | Git / CI | GitHub + GitHub Actions | To configure |
